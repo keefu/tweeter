@@ -36,6 +36,13 @@ article {
   margin:2em;
   border: 1px solid gray;
   border-radius: 10px;
+  opacity: 0.6;
+}
+
+article:hover {
+  /* color: #0eb2ff !important; */
+  opacity: 1;
+  /* border-top-color: #0eb2ff; */
 }
 
 article header {
