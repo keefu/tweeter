@@ -31,3 +31,34 @@ body {
   background-color: white;
   padding-top: 140px;
 }
+
+article {
+  margin:2em;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+article header {
+  border-top-left-radius:10px;
+  border-top-right-radius: 10px;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+article header img {
+  width: 30px;
+  height: 30px;
+}
+
+article main p {
+  padding:10px;
+}
+
+article footer {
+  border-top: 1px solid lightgray;
+  padding: 10px;
+}
+
