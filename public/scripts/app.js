@@ -3,21 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": {
-      "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-      "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-      "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-    },
-    "handle": "@SirIsaac"
-  },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
-  },
-  "created_at": 1461116232227
-}
+
 const data = [
   {
     "user": {
@@ -64,82 +50,48 @@ const data = [
     "created_at": 1461113796368
   }
 ];
-document.addEventListener("dblclick", (event) => {
-    console.log(event);
-  });
-  
-document.addEventListener("keypress", (event) => {
-    console.log(event);
-  });
 
-  $(document).ready(function() {
-    const createTweetElement = tweet => {
+$(document).ready(function() {
+  const createTweetElement = tweet => {
 
-      //Building the header
-      let $profileImage = $("<img>").addClass("avatar").attr("src","http://fillmurray.com/200/200");
-      let $profileName = $("<span>").text("Jean");
-      let $imageAndName = $("<h2>");
+    //Building the header
+    let $profileImage = $("<img>").addClass("avatar").attr("src",tweet.user.avatars.small);
+    let $profileName = $("<span>").text(tweet.user.name);
+    let $imageAndName = $("<h2>");
 
-      $imageAndName.append($profileImage).append($profileName);
+    $imageAndName.append($profileImage).append($profileName);
 
-      let $handle = $("<span>").text("@lily");
-      let $tweetHeader = $("<header>");
-      
-      //Appending the header
-      $tweetHeader.append($imageAndName).append($handle);
-      //Appending the main
-      let $tweetContext = $("<p>").text("Lorem ipsum dolor sit amet consectetur adipisicing elit.")
-      let $tweetMain = $("<main>");
-      $tweetMain.append($tweetContext);
-      //Appending the footer
-      let $tweetFooter = $("<footer>");
-      let $datePost = $("<span>").text('A THOUSANDS AGO IN A FAR FAR AWAY GALAXY WHERE THE CHICKENS ARE MASTERS OF THE UNIVERSES.');
-      
-      $tweetFooter.append($datePost);
+    let $handle = $("<span>").text(tweet.user.handle);
+    let $tweetHeader = $("<header>");
+    
+    //Appending the header
+    $tweetHeader.append($imageAndName).append($handle);
 
-      let $article = $("<article>");  
+    //Appending the main
+    let $tweetContext = $("<p>").text(tweet.content.text)
+    let $tweetMain = $("<main>");
 
-      //Appendding the article
-      $article.append($tweetHeader).append($tweetMain).append($tweetFooter);
+    $tweetMain.append($tweetContext);
 
-      return $article;
+    //Appending the footer
+    let $tweetFooter = $("<footer>");
+    let $datePost = $("<span>").text(tweet.created_at);
+    
+    $tweetFooter.append($datePost);
+
+    let $article = $("<article>");  
+
+    //Appendding the article
+    $article.append($tweetHeader).append($tweetMain).append($tweetFooter);
+
+    return $article;
+  }
+
+  function renderTweets(tweetsList) {
+    console.log(tweetsList);
+    for(let tweet of tweetsList){
+      $("#tweets-container").append(createTweetElement(tweet));
     }
-
-    var $tweet = createTweetElement(tweetData);
-    $("#tweets-container").append($tweet);
-
-
-    function renderTweets(tweetsList) {
-      console.log(tweetsList);
-      for(let tweet of tweetsList){
-        $("#tweets-container").append(createTweetElement(tweet));
-      }
-    }
-    renderTweets(data);
-
-  });
-
-  
-
-
-
-
-  // $(document).ready(function() {
-  //   const renderTweets = 
-  // })
- 
-//   <article>
-//   <header>
-//     <h2>
-//       <img class="avatar" src="/images/bird.png" >
-//       <span>User Name</span>
-//     </h2>
-//     <span>@user</span>
-//   </header>
-//   <main>
-//     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-//   </main>
-//   <footer>
-//     5 days ago
-//   </footer>
-// </article>
+  }
+  renderTweets(data);
+});
