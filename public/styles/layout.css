@@ -40,9 +40,7 @@ article {
 }
 
 article:hover {
-  /* color: #0eb2ff !important; */
   opacity: 1;
-  /* border-top-color: #0eb2ff; */
 }
 
 article header {

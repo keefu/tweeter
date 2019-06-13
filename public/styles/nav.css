@@ -21,3 +21,16 @@ nav {
     font-size: 2em;
     padding-left: 10px;
   }
+
+  #nav-bar .compose {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    float: right;
+    margin-top: 5px;
+    opacity: 0.6;
+  }
+
+  #nav-bar .compose:hover {
+    opacity: 1;
+  }

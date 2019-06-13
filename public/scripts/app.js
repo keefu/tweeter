@@ -59,7 +59,7 @@ $(document).ready(function() {
   var $submittedForm= $('form');
   $submittedForm.on('submit', function (event) {
     event.preventDefault();
-
+    //To validate the entry form of tweets
     if(0 < $("textarea").val().length && $("textarea").val().length <140) {
       $.ajax('/tweets', { method: 'POST', data: {text:$("textarea").val()}})
       .then(function () {
@@ -77,4 +77,12 @@ $(document).ready(function() {
     }
   });
   loadTweet();
+
+  $("#nav-bar .compose").click(function(e){
+    e.preventDefault();
+    $("main .new-tweet").slideToggle();
+    $('html, body').animate({scrollTop:0})
+    $("textarea").select();
+  })
+
 });
