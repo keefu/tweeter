@@ -59,6 +59,8 @@ $(document).ready(function() {
   var $submittedForm= $('form');
   $submittedForm.on('submit', function (event) {
     event.preventDefault();
+    $("main .empty_error").addClass("hide");
+    $("main .excess_error").addClass("hide");
     //To validate the entry form of tweets
     if(0 < $("textarea").val().length && $("textarea").val().length <140) {
       $.ajax('/tweets', { method: 'POST', data: {text:$("textarea").val()}})
@@ -69,12 +71,16 @@ $(document).ready(function() {
       });
     } else {
         if($("textarea").val().length === 0){
-          alert("Tweet message is empty.");
+          $("main .empty_error").removeClass("hide");
+          return;
         }
         if($("textarea").val().length > 140){
-          alert("Tweet message has exceeded maximum length.");
+          $("main .excess_error").removeClass("hide");
+          return;
         }
+
     }
+
   });
   loadTweet();
 
