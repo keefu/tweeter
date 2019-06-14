@@ -31,8 +31,11 @@ $(document).ready(function() {
     let date = new Date(tweet.created_at).toISOString().slice(0,10);
     let $tweetFooter = $("<footer>");
     let $datePost = $("<span>").text(date);
-        
-    $tweetFooter.append($datePost);
+    let $flagImage = $("<img>").addClass("flag").attr("src","images/flag.png");
+    let $shareImage = $("<img>").addClass("share").attr("src","images/share.png");
+    let $heartImage = $("<img>").addClass("heart").attr("src","images/heart.png");
+
+    $tweetFooter.append($datePost).append($heartImage).append($shareImage).append($flagImage);
 
     let $article = $("<article>");  
 
@@ -46,6 +49,12 @@ $(document).ready(function() {
     $("#tweets-container").empty();
     for(let tweet of tweetsList){
       $("#tweets-container").prepend(createTweetElement(tweet));
+      $("#tweets-container").mouseover(function(){
+        $("footer img").css("opacity", "1");
+      });
+      $("#tweets-container").mouseout(function(){
+        $("footer img").css("opacity", "0");
+      });
     }
   }
 
@@ -86,6 +95,7 @@ $(document).ready(function() {
   });
 
   loadTweet();
+  
   //Compose a funtion to slide tweet container
   $("#nav-bar .compose").click(function(e){
     e.preventDefault();
