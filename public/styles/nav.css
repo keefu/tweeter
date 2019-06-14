@@ -9,7 +9,7 @@ nav {
     padding-right: 2em;
     padding-left: 2em;
     line-height: 80px;
-    z-index:2;
+    z-index:2; /*Top layering the nav-bar so container will not scroll on top */
   }
 
   #nav-bar .logo {

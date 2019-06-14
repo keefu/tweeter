@@ -39,6 +39,11 @@ main .excess_error {
     font-size: 0.8em;
 }
 
+main .new-tweet footer {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Date in footer */
 main footer .span {
     display: flex;

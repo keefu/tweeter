@@ -51,7 +51,7 @@ $(document).ready(function() {
       $("#tweets-container").prepend(createTweetElement(tweet));
     }
   }
-
+  //Target icons apparearance when mouse hovers on each tweet
   $( "#tweets-container" ).on( "mouseenter", "article", function( event ) {
      event.preventDefault();
     $(this).find("footer img").css("opacity", "1");
