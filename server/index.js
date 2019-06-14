@@ -20,11 +20,9 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   }
   console.log(`Connected to mongodb: ${MONGODB_URI}`);
 
-  //Pass the parameter db to DataHelpers
+  //Transmit the parameter
   const DataHelpers = require("./lib/data-helpers.js")(db);
-  //Then pass the parameter DataHelpers to tweetsRoutes
   const tweetsRoutes = require("./routes/tweets")(DataHelpers);
-  //Since tweetsRoutes is used in app.use 
   app.use("/tweets", tweetsRoutes);
 
   app.listen(PORT, () => {
