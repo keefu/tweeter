@@ -49,14 +49,18 @@ $(document).ready(function() {
     $("#tweets-container").empty();
     for(let tweet of tweetsList){
       $("#tweets-container").prepend(createTweetElement(tweet));
-      $("#tweets-container").mouseover(function(){
-        $("footer img").css("opacity", "1");
-      });
-      $("#tweets-container").mouseout(function(){
-        $("footer img").css("opacity", "0");
-      });
     }
   }
+
+  $( "#tweets-container" ).on( "mouseenter", "article", function( event ) {
+     event.preventDefault();
+    $(this).find("footer img").css("opacity", "1");
+  });
+
+  $( "#tweets-container" ).on( "mouseleave", "article", function( event ) {
+     event.preventDefault();
+    $(this).find("footer img").css("opacity", "0");
+  });
 
   const loadTweet = () => { 
     $.ajax('/tweets', { method: 'GET'})
